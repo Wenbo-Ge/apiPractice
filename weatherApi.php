@@ -46,17 +46,23 @@
     		var search=$('#city').val();
     		var apiKey='8df25373e2ca625f7ba9376f5a885f4d';
     		console.log(search);
-            // if (search='') {
-            //     alert('Please enter a city!');
-            // }
+            
     		// 前端 restful api 就是ajax
     		// api：用ajax 和rest的方式  按照标准把后端数据返回前端
     		$.get(
     			'http://api.openweathermap.org/data/2.5/weather?q=' +search  +'&appid='+apiKey,
     			// 接callback function
-    			function(data){
+    			function(data,statusTxt,xhr){
     				// data 返回的是json，用json formatter看格式
+                   
+                   //?????????????
+                    // alert(statusTxt+'：Current weather is loading!');
     				$('#info_current').html('<h3 class="text-primary">Current temperature: '+data.main.temp+'</h3>'+'<h3 class="text-primary">Current weather: '+data.weather[0].main+'</h3>');
+                    //????????????
+                    // if (statusTxt=='fail') {
+                    //     alert(statusTxt+' Please enter a city!');
+                    // }
+                    
     			});
     	}
 
@@ -67,7 +73,10 @@
             console.log(forecast);
             $.get(
                 'http://api.openweathermap.org/data/2.5/forecast?q='+forecast+'&appid='+apiKey, function(data){
-                    var div='';
+//???????????????????
+    // alert(statusTxt+'：Forecast is loading!');
+
+     var div='';
     for (var i = 0; i < data.list.length; i++) {$('#info_forecast').html(div+='<h3 class="text-success">Date and time: '+data.list[i].dt_txt+'</h3>'+'<h3 class="text-success">Temperature: '+data.list[i].main.temp+'</h3>'+'<h3 class="text-success">Weather: '+data.list[i].weather[0].main+'</h3>')}  
                 });
         }
