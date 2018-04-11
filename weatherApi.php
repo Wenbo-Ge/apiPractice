@@ -75,7 +75,7 @@
             var forecast=$('#city').val();
             var apiKey='8df25373e2ca625f7ba9376f5a885f4d';
             console.log(forecast);
-            if (!search) {
+            if (!forecast) {
 
                 alert('Please enter a city!');
             }else{
