@@ -26,8 +26,15 @@
  </div>
 
 <!-- render weather info here -->
- <div id="info_current">
- 	
+ <div class="container">
+     <div class="row">
+         <div class="col 1">
+
+         </div>
+         <div class="col 2">
+
+         </div>
+     </div>
  </div>
 
 
@@ -58,13 +65,13 @@
         			// 接callback function
         			function(data,statusTxt,xhr){
         				// data 返回的是json，用json formatter看格式
-                       
-                       //?????????????
-        				$('#info_current').html('<h3 class="text-primary">Current temperature: '+data.main.temp+'</h3>'+'<h3 class="text-primary">Current weather: '+data.weather[0].main+'</h3>');
-                        //????????????
-                        // if (statusTxt=='fail') {
-                        //     alert(statusTxt+' Please enter a city!');
-                        // }
+
+
+        				$('.1').html('<h3> Current temperature: '+data.main.temp+'</h3>');
+                        $('.2').html('<h3> Current weather: '+data.weather[0].main+'</h3>');
+
+
+
                         
         			});
             }
@@ -81,8 +88,8 @@
             }else{
             $.get(
                 'http://api.openweathermap.org/data/2.5/forecast?q='+forecast+'&appid='+apiKey, function(data){
-//???????????????????
-    // alert(statusTxt+'：Forecast is loading!');
+
+
 
      var div='';
     for (var i = 0; i < data.list.length; i++) {$('#info_forecast').html(div+='<h3 class="text-success">Date and time: '+data.list[i].dt_txt+'</h3>'+'<h3 class="text-success">Temperature: '+data.list[i].main.temp+'</h3>'+'<h3 class="text-success">Weather: '+data.list[i].weather[0].main+'</h3>')}  
